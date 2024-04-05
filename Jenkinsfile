@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/example/repository.git', branch: 'master'
+                git url: 'https://github.com/PeterPorzuczek/TimeRiddle.git', branch: 'master'
             }
         }
     }
