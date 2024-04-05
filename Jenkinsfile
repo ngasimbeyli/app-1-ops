@@ -1,25 +1,9 @@
 pipeline {
     agent any
-    parameters {
-        booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Should the deployment stage be executed?')
-    }
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building application...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing application...'
-            }
-        }
-        stage('Deploy') {
-            when {
-                expression { params.DEPLOY }
-            }
-            steps {
-                echo 'Deploying application...'
+                git url: 'https://github.com/example/repository.git', branch: 'master'
             }
         }
     }
