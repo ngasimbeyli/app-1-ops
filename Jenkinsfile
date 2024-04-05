@@ -17,9 +17,6 @@ pipeline {
                 // Application deployment scripts
             }
         }
-            stages {
-        stage('Greeting') {
-            steps {
                 stage('Example') {
             steps {
                 echo "${params.GREETING}, we are building the ${params.BRANCH} branch."
