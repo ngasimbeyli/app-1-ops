@@ -4,8 +4,6 @@ pipeline {
         booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Should the deployment stage be executed?')
     }
     stages {
-    
-               stages {
         stage('Build') {
             steps {
                 echo 'Building application...'
@@ -26,4 +24,4 @@ pipeline {
         }
     }
 }
-}
+
