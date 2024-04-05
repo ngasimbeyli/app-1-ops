@@ -1,26 +1,29 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'GREETING', defaultValue: 'Hello', description: 'The greeting message')
-        choice(name: 'BRANCH', choices: ['master', 'dev'], description: 'Branch to build')
+        booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Should the deployment stage be executed?')
     }
     stages {
+    
+               stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                // Here you can find the commands that build your application, such as mvn clean install
+                echo 'Building application...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing application...'
             }
         }
         stage('Deploy') {
-            steps {
-                echo 'Deploying..'
-                // Application deployment scripts
+            when {
+                expression { params.DEPLOY }
             }
-        }
-                stage('Example') {
             steps {
-                echo "${params.GREETING}, we are building the ${params.BRANCH} branch."
+                echo 'Deploying application...'
             }
         }
     }
+}
 }
